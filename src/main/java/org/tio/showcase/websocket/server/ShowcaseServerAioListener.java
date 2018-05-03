@@ -12,7 +12,7 @@ import org.tio.websocket.server.WsServerAioListener;
 
 /**
  * @author tanyaowu
- * 用户根据情况来完成该类的实现，也可以不用实现
+ * 用户根据情况来完成该类的实现
  */
 public class ShowcaseServerAioListener extends WsServerAioListener {
 	private static Logger log = LoggerFactory.getLogger(ShowcaseServerAioListener.class);
