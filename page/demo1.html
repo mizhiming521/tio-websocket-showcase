@@ -16,15 +16,30 @@
     <title>tio-ws演示</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <link type="text/css" rel="stylesheet" href="./demo.css">
 </head>
 
 <body>
     <div id="app">
-        <iframe src="./demo.html" style="width:400px; height:400px;"></iframe>
-        <iframe src="./demo1.html" style="width:400px; height:400px;"></iframe>
+        <div class="content">
+            <div style="width: 350px;height: 340px;background: #dbfada;border: 1px solid #0bbc49;overflow: auto;" id="contentId"></div>
+        </div>
+
+        <input name="text" id="textId" value="我爱tio" />
+        <button id="sendButton" onClick="send()">Send</button>
+        <button id="clearButton" onClick="clearMsg()">Clear</button>
 
     </div>
 
 </body>
 
 </html>
+
+<!-- 组件js，和业务不相关的 -->
+<script src="./tio/tiows.js"></script>
+
+
+<!-- 和业务相关的js，业务需要修改 -->
+<script src="./DemoHandler.js"></script>
+<script src="./demo.js"></script>
