@@ -1,5 +1,5 @@
-var ws_protocol = 'ws'; // ws 或 wss
-var ip = '127.0.0.1'
+var ws_protocol = 'wss'; // ws 或 wss
+var ip = 't-io.org'
 var port = 9326
 
 var heartbeatTimeout = 5000; // 心跳超时时间，单位：毫秒

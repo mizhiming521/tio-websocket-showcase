@@ -2,6 +2,8 @@ package org.tio.showcase.websocket.server;
 
 import java.io.IOException;
 
+import org.apache.commons.lang3.StringUtils;
+import org.tio.core.ssl.SslConfig;
 import org.tio.server.ServerGroupContext;
 import org.tio.websocket.server.WsServerStarter;
 
@@ -18,7 +20,7 @@ public class ShowcaseWebsocketStarter {
 	 *
 	 * @author tanyaowu
 	 */
-	public ShowcaseWebsocketStarter(int port, ShowcaseWsMsgHandler wsMsgHandler) throws IOException {
+	public ShowcaseWebsocketStarter(int port, ShowcaseWsMsgHandler wsMsgHandler) throws Exception {
 		wsServerStarter = new WsServerStarter(port, wsMsgHandler);
 
 		serverGroupContext = wsServerStarter.getServerGroupContext();
@@ -31,6 +33,19 @@ public class ShowcaseWebsocketStarter {
 		serverGroupContext.setIpStatListener(ShowcaseIpStatListener.me);
 		//设置心跳超时时间
 		serverGroupContext.setHeartbeatTimeout(ShowcaseServerConfig.HEARTBEAT_TIMEOUT);
+		//如果你希望通过wss来访问，就加上下面这一行吧，不过首先你得有证书哦
+		initSsl(serverGroupContext);
+	}
+	
+	private static void initSsl(ServerGroupContext serverGroupContext) throws Exception {
+		String keyStoreFile = "classpath:config/ssl/keystore.jks";
+		String trustStoreFile = "classpath:config/ssl/keystore.jks";
+		String keyStorePwd = "214323428310224";
+
+		if (StringUtils.isNotBlank(keyStoreFile) && StringUtils.isNotBlank(trustStoreFile)) {
+			SslConfig sslConfig = SslConfig.forServer(keyStoreFile, trustStoreFile, keyStorePwd);
+			serverGroupContext.setSslConfig(sslConfig);
+		}
 	}
 
 	/**
@@ -38,7 +53,7 @@ public class ShowcaseWebsocketStarter {
 	 * @author tanyaowu
 	 * @throws IOException
 	 */
-	public static void start() throws IOException {
+	public static void start() throws Exception {
 		ShowcaseWebsocketStarter appStarter = new ShowcaseWebsocketStarter(ShowcaseServerConfig.SERVER_PORT, ShowcaseWsMsgHandler.me);
 		appStarter.wsServerStarter.start();
 	}
@@ -54,7 +69,7 @@ public class ShowcaseWebsocketStarter {
 		return wsServerStarter;
 	}
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		start();
 	}
 
