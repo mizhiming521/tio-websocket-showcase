@@ -1,7 +1,12 @@
 # tio-websocket-showcase
 
 #### 项目介绍
-展示tio-websocket的用法，包括t-io作者写的一个用于连接websocket服务器的js小框架
+1. 展示tio-websocket的用法，官方提供的唯一tio-websocket示范教程
+2. 包括wss和流量监控及处理等高级特性
+3. 还包括t-io作者写的一个用于连接websocket服务器的js小框架----tiows.js（内置断链重连、定时主动发心跳等功能，使用API极其简单）
+4. [演示地址](https://t-io.org/ws-showcase/index.html)
+5. 效果图
+![输入图片说明](https://t-io.org/ws-showcase/img/1.png "在这里输入图片标题")
 
 #### 安装教程
 
