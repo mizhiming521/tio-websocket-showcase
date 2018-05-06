@@ -1,4 +1,4 @@
-var protocol = 'ws'; // ws 或 wss
+var ws_protocol = 'ws'; // ws 或 wss
 var ip = '127.0.0.1'
 var port = 9326
 
@@ -13,7 +13,7 @@ var tiows
 function initWs () {
   var queryString = 'name=科比&name=科比&name=库里'
   var param = null
-  tiows = new tio.ws(protocol, ip, port, queryString, param, handler, heartbeatTimeout, reconnInterval, binaryType)
+  tiows = new tio.ws(ws_protocol, ip, port, queryString, param, handler, heartbeatTimeout, reconnInterval, binaryType)
   tiows.connect()
 }
 

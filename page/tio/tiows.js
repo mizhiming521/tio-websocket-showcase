@@ -2,7 +2,7 @@ var tio = {}
 tio.ws = {}
 
 /**
- * @param {*} protocol wss or ws 
+ * @param {*} ws_protocol wss or ws 
  * @param {*} ip 
  * @param {*} port 
  * @param {*} paramStr 加在ws url后面的请求参数，形如：name=张三&id=12
@@ -12,10 +12,10 @@ tio.ws = {}
  * @param {*} reconnInterval 重连间隔时间 单位：毫秒
  * @param {*} binaryType 'blob' or 'arraybuffer';//arraybuffer是字节
  */
-tio.ws = function (protocol, ip, port, paramStr, param, handler, heartbeatTimeout, reconnInterval, binaryType) {
+tio.ws = function (ws_protocol, ip, port, paramStr, param, handler, heartbeatTimeout, reconnInterval, binaryType) {
   this.ip = ip
   this.port = port
-  this.url = protocol + '://' + ip + ':' + port
+  this.url = ws_protocol + '://' + ip + ':' + port
   this.binaryType = binaryType || 'arraybuffer'
 
   if (paramStr) {
