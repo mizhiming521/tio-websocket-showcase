@@ -33,6 +33,18 @@ public class ShowcaseWsMsgHandler implements IWsMsgHandler {
 	public HttpResponse handshake(HttpRequest request, HttpResponse httpResponse, ChannelContext channelContext) throws Exception {
 		String clientip = request.getClientIp();
 		log.info("收到来自{}的ws握手包\r\n{}", clientip, request.toString());
+
+		//绑定到群组，后面会有群发
+		Aio.bindGroup(channelContext, Const.GROUP_ID);
+
+//		int count = Aio.getAllChannelContexts(channelContext.getGroupContext()).getObj().size();
+//
+//		String msg = channelContext.getClientNode().toString() + " 进来了，现在共有【" + count + "】人在线";
+//		//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
+//		WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
+//		//群发
+//		Aio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
+
 		return httpResponse;
 	}
 
