@@ -6,7 +6,7 @@ tio.ws = {}
  * @param {*} ip 
  * @param {*} port 
  * @param {*} paramStr 加在ws url后面的请求参数，形如：name=张三&id=12
- * @param {*} param 作为TioWsClient的map参数
+ * @param {*} param 作为tio.ws对象的参数，由业务自己使用，框架不使用
  * @param {*} handler 
  * @param {*} heartbeatTimeout 心跳时间 单位：毫秒
  * @param {*} reconnInterval 重连间隔时间 单位：毫秒
