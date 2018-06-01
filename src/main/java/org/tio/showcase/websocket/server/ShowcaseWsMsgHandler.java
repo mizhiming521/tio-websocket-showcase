@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tio.core.Aio;
+import org.tio.core.Tio;
 import org.tio.core.ChannelContext;
 import org.tio.http.common.HttpRequest;
 import org.tio.http.common.HttpResponse;
@@ -46,14 +46,14 @@ public class ShowcaseWsMsgHandler implements IWsMsgHandler {
 	@Override
 	public void onAfterHandshaked(HttpRequest httpRequest, HttpResponse httpResponse, ChannelContext channelContext) throws Exception {
 		//绑定到群组，后面会有群发
-		Aio.bindGroup(channelContext, Const.GROUP_ID);
-		int count = Aio.getAllChannelContexts(channelContext.getGroupContext()).getObj().size();
+		Tio.bindGroup(channelContext, Const.GROUP_ID);
+		int count = Tio.getAllChannelContexts(channelContext.getGroupContext()).getObj().size();
 
 		String msg = channelContext.getClientNode().toString() + " 进来了，现在共有【" + count + "】人在线";
 		//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
 		WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
 		//群发
-		Aio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
+		Tio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class ShowcaseWsMsgHandler implements IWsMsgHandler {
 	 */
 	@Override
 	public Object onClose(WsRequest wsRequest, byte[] bytes, ChannelContext channelContext) throws Exception {
-		Aio.remove(channelContext, "receive close flag");
+		Tio.remove(channelContext, "receive close flag");
 		return null;
 	}
 
@@ -94,7 +94,7 @@ public class ShowcaseWsMsgHandler implements IWsMsgHandler {
 		//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
 		WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
 		//群发
-		Aio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
+		Tio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
 
 		//返回值是要发送给客户端的内容，一般都是返回null
 		return null;

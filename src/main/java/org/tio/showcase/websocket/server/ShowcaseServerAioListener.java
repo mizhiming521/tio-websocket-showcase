@@ -5,7 +5,7 @@ package org.tio.showcase.websocket.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tio.core.Aio;
+import org.tio.core.Tio;
 import org.tio.core.ChannelContext;
 import org.tio.core.intf.Packet;
 import org.tio.websocket.common.WsResponse;
@@ -53,13 +53,13 @@ public class ShowcaseServerAioListener extends WsServerAioListener {
 
 		if (wsSessionContext.isHandshaked()) {
 			
-			int count = Aio.getAllChannelContexts(channelContext.getGroupContext()).getObj().size();
+			int count = Tio.getAllChannelContexts(channelContext.getGroupContext()).getObj().size();
 
 			String msg = channelContext.getClientNode().toString() + " 离开了，现在共有【" + count + "】人在线";
 			//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
 			WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
 			//群发
-			Aio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
+			Tio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
 		}
 	}
 
