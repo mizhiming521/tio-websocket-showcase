@@ -20,7 +20,7 @@ import org.tio.websocket.server.handler.IWsMsgHandler;
 public class ShowcaseWsMsgHandler implements IWsMsgHandler {
 	private static Logger log = LoggerFactory.getLogger(ShowcaseWsMsgHandler.class);
 
-	public static ShowcaseWsMsgHandler me = new ShowcaseWsMsgHandler();
+	public static final ShowcaseWsMsgHandler me = new ShowcaseWsMsgHandler();
 
 	private ShowcaseWsMsgHandler() {
 
