@@ -1,4 +1,4 @@
-var ws_protocol = 'wss'; // ws 或 wss
+var ws_protocol = 'ws'; // ws 或 wss
 var ip = '127.0.0.1'
 var port = 9326
 
