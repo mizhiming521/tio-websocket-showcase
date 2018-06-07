@@ -34,7 +34,7 @@ public class ShowcaseWebsocketStarter {
 		//设置心跳超时时间
 		serverGroupContext.setHeartbeatTimeout(ShowcaseServerConfig.HEARTBEAT_TIMEOUT);
 		//如果你希望通过wss来访问，就加上下面这一行吧，不过首先你得有证书哦
-		initSsl(serverGroupContext);
+		//initSsl(serverGroupContext);
 	}
 	
 	private static void initSsl(ServerGroupContext serverGroupContext) throws Exception {
