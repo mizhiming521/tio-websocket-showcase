@@ -1,4 +1,7 @@
 # tio-websocket-showcase
+这个工程依赖最新的t-io代码，如果发现编译不通过，请到t-io下载代码并install，t-io地址：https://gitee.com/tywo45/t-io
+
+
 
 #### 项目介绍
 1. 展示tio-websocket的用法，官方提供的唯一tio-websocket示范教程
