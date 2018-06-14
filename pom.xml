@@ -58,6 +58,13 @@
 
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -79,12 +86,12 @@
 						<addMavenDescriptor>false</addMavenDescriptor><!-- 生成的jar中，不要包含pom.xml和pom.properties这两个文件 -->
 					</archive>
 
-					<excludes>
-						<exclude>**/config/**/*</exclude>
+					<finalName>${project.artifactId}</finalName>
 
-						<exclude>app.conf</exclude>
-						<exclude>logback.properties</exclude>
-						<exclude>logback.xml</exclude>
+					<excludes>
+						<exclude>config/**/*</exclude>
+						<exclude>*.properties</exclude>
+						<exclude>*.xml</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
@@ -105,7 +112,8 @@
 							<descriptors>
 								<descriptor>script/pkg.xml</descriptor>
 							</descriptors>
-							<outputDirectory>${project.build.directory}/dist/</outputDirectory>
+							<outputDirectory>${project.build.directory}/</outputDirectory>
+							<finalName>${project.artifactId}</finalName>
 						</configuration>
 					</execution>
 				</executions>
