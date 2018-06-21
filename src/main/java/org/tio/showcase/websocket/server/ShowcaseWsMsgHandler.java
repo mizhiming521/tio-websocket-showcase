@@ -47,13 +47,13 @@ public class ShowcaseWsMsgHandler implements IWsMsgHandler {
 	public void onAfterHandshaked(HttpRequest httpRequest, HttpResponse httpResponse, ChannelContext channelContext) throws Exception {
 		//绑定到群组，后面会有群发
 		Tio.bindGroup(channelContext, Const.GROUP_ID);
-		int count = Tio.getAllChannelContexts(channelContext.getGroupContext()).getObj().size();
+		int count = Tio.getAllChannelContexts(channelContext.groupContext).getObj().size();
 
 		String msg = channelContext.getClientNode().toString() + " 进来了，现在共有【" + count + "】人在线";
 		//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
 		WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
 		//群发
-		Tio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
+		Tio.sendToGroup(channelContext.groupContext, Const.GROUP_ID, wsResponse);
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class ShowcaseWsMsgHandler implements IWsMsgHandler {
 		//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
 		WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
 		//群发
-		Tio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
+		Tio.sendToGroup(channelContext.groupContext, Const.GROUP_ID, wsResponse);
 
 		//返回值是要发送给客户端的内容，一般都是返回null
 		return null;

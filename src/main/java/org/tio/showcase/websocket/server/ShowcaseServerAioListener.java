@@ -53,13 +53,13 @@ public class ShowcaseServerAioListener extends WsServerAioListener {
 
 		if (wsSessionContext.isHandshaked()) {
 			
-			int count = Tio.getAllChannelContexts(channelContext.getGroupContext()).getObj().size();
+			int count = Tio.getAllChannelContexts(channelContext.groupContext).getObj().size();
 
 			String msg = channelContext.getClientNode().toString() + " 离开了，现在共有【" + count + "】人在线";
 			//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
 			WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
 			//群发
-			Tio.sendToGroup(channelContext.getGroupContext(), Const.GROUP_ID, wsResponse);
+			Tio.sendToGroup(channelContext.groupContext, Const.GROUP_ID, wsResponse);
 		}
 	}
 
