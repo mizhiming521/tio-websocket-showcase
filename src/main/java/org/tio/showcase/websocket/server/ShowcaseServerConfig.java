@@ -29,7 +29,7 @@ public abstract class ShowcaseServerConfig {
 	/**
 	 * 心跳超时时间，单位：毫秒
 	 */
-	public static final int HEARTBEAT_TIMEOUT = 1000 * 60;
+	public static final int HEARTBEAT_TIMEOUT = 1000 * 60 * 60;
 
 	/**
 	 * ip数据监控统计，时间段

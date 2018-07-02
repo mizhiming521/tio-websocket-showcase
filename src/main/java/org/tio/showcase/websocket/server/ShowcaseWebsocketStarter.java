@@ -3,6 +3,7 @@ package org.tio.showcase.websocket.server;
 import java.io.IOException;
 
 import org.tio.server.ServerGroupContext;
+import org.tio.websocket.common.WsRequest;
 import org.tio.websocket.server.WsServerStarter;
 
 /**

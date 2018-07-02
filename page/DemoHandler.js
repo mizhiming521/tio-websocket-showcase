@@ -11,7 +11,7 @@ var DemoHandler = function () {
    */
   this.onmessage = function (event, ws) {
     var data = event.data
-    document.getElementById('contentId').innerHTML += data + '<br>'
+    //document.getElementById('contentId').innerHTML += data + '<br>'
   }
 
   this.onclose = function (e, ws) {
